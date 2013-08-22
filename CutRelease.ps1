@@ -1,3 +1,5 @@
+. .nuget\nuget.exe install packages.config -OutputDirectory packages
+
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe TestApp.sln /t:Rebuild /p:Configuration=Release
 
 $outputPackage = (gci .\bin\Release -filter TestApp*.nupkg)[0].FullName
