@@ -1,11 +1,14 @@
-. .nuget\nuget.exe install packages.config -OutputDirectory packages
+$rootFolder = split-path -parent $MyInvocation.MyCommand.Definition
+$configuration = "Release"
 
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe TestApp.sln /t:Rebuild /p:Configuration=Release
+if (Test-Path "bin\$configuration")  { Remove-Item "bin\$configuration" -Recurse -Force }
 
-$outputPackage = (gci .\bin\Release -filter TestApp*.nupkg)[0].FullName
+. "$rootFolder\.nuget\nuget.exe" install "$rootFolder\packages.config" -OutputDirectory "$rootFolder\packages"
 
-write-host "Creating a release package using $outputPackage"
+# . "$rootFolder\.nuget\nuget.exe" update "$rootFolder\packages.config" -RepositoryPath "$rootFolder\packages" -NonInteractive
 
-# TODO: invoke Create-Release with required parameters?
+. $env:SystemRoot\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe TestApp.sln /t:Rebuild /p:Configuration=$configuration
 
-.\packages\Shimmer.0.6.1.0-beta\tools\CreateReleasePackage.exe --output-directory=".\artifacts" $outputPackage
+$scripts = (Get-ChildItem "$rootFolder\packages\" -Filter "Create-Release.ps1" -Recurse)
+
+. $scripts[0].FullName -ProjectNameToBuild "TestApp" -SolutionDir . -BuildDirectory "bin\Release"
