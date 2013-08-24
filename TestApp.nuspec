@@ -2,7 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>TestApp</id>
-    <summary>My Test App</summary>
+    <title>My Test App</title>
+    <summary>This is my awesome app. You should try it out.</summary>
     <version>$version$-beta</version>
     <authors>shiftkey</authors>
     <owners>shiftkey</owners>
