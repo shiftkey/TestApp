@@ -40,9 +40,9 @@
     <ApplicationIcon>sparkles.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CreateReleasePackage, Version=0.6.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="CreateReleasePackage, Version=0.6.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.0.6.12-beta\lib\net40\CreateReleasePackage.exe</HintPath>
+      <HintPath>packages\Shimmer.0.6.13-beta\lib\net40\CreateReleasePackage.exe</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
@@ -76,17 +76,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\reactiveui-core.4.6.4\lib\net45\ReactiveUI_Net45.dll</HintPath>
     </Reference>
-    <Reference Include="Shimmer.Client, Version=0.6.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Shimmer.Client, Version=0.6.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.Client.0.6.12-beta\lib\net40\Shimmer.Client.dll</HintPath>
+      <HintPath>packages\Shimmer.Client.0.6.13-beta\lib\net40\Shimmer.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Shimmer.Core, Version=0.6.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Shimmer.Core, Version=0.6.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.Core.0.6.12-beta\lib\net40\Shimmer.Core.dll</HintPath>
+      <HintPath>packages\Shimmer.Core.0.6.13-beta\lib\net40\Shimmer.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Shimmer.WiXUiClient, Version=0.6.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Shimmer.WiXUiClient, Version=0.6.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.WiXUiClient.0.6.12-beta\lib\net40\Shimmer.WiXUiClient.dll</HintPath>
+      <HintPath>packages\Shimmer.WiXUiClient.0.6.13-beta\lib\net40\Shimmer.WiXUiClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
