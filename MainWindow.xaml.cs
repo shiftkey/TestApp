@@ -65,16 +65,23 @@ namespace TestApp
                 .Subscribe(x =>
                 {
                     if (updateManager != null) updateManager.Dispose();
-                    updateManager = new UpdateManager(UpdatePath, "SampleUpdatingApp", FrameworkVersion.Net40);
+                    updateManager = new UpdateManager(UpdatePath, "TestApp", FrameworkVersion.Net40);
                 });
 
             CheckForUpdate = new ReactiveAsyncCommand(noneInFlight);
             CheckForUpdate.RegisterAsyncObservable(_ => updateManager.CheckForUpdate())
-                .Subscribe(x => { UpdateInfo = x; DownloadedUpdateInfo = null; });
+                .Subscribe(x =>
+                {
+                    UpdateInfo = x;
+                    DownloadedUpdateInfo = null;
+                });
 
             DownloadReleases = new ReactiveAsyncCommand(noneInFlight.Where(_ => UpdateInfo != null));
             DownloadReleases.RegisterAsyncObservable(_ => updateManager.DownloadReleases(UpdateInfo.ReleasesToApply))
-                .Subscribe(_ => DownloadedUpdateInfo = UpdateInfo);
+                .Subscribe(_ =>
+                {
+                    DownloadedUpdateInfo = UpdateInfo;
+                });
 
             ApplyReleases = new ReactiveAsyncCommand(noneInFlight.Where(_ => DownloadedUpdateInfo != null));
             ApplyReleases.RegisterAsyncObservable(_ => updateManager.ApplyReleases(DownloadedUpdateInfo));
