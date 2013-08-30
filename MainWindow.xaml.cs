@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
+using System.Reflection;
 using System.Windows;
 using ReactiveUI;
 using ReactiveUI.Xaml;
@@ -20,6 +22,13 @@ namespace TestApp
 
     public class MainWindowViewModel : ReactiveObject
     {
+        string _Version;
+        public string Version
+        {
+            get { return _Version; }
+            set { this.RaiseAndSetIfChanged(x => x.Version, value); }
+        }
+
         string _UpdatePath;
         public string UpdatePath
         {
@@ -69,6 +78,10 @@ namespace TestApp
 
             ApplyReleases = new ReactiveAsyncCommand(noneInFlight.Where(_ => DownloadedUpdateInfo != null));
             ApplyReleases.RegisterAsyncObservable(_ => updateManager.ApplyReleases(DownloadedUpdateInfo));
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            Version = fvi.FileVersion;
 
             Observable.CombineLatest(
                 CheckForUpdate.ItemsInflight.StartWith(0),
