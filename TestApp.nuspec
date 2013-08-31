@@ -2,11 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>TestApp</id>
-    <title>A human-friendly name for TestApp goes here</title>
+    <title>This is a TestApp</title>
     <version>$version$-beta</version>
-    <authors>Your Name Here</authors>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A description of TestApp goes here </description>
-    <tags>tags that describe what TestApp does</tags>
+    <authors>Brendan Forster</authors>
+    <description>Isn't it cool?</description>
   </metadata>
 </package>
