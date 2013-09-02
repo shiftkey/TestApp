@@ -61,13 +61,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\NuGet.Core.2.7.0\lib\net40-Client\NuGet.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Shimmer.Client, Version=0.6.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.Client.0.6.9-beta\lib\net40\Shimmer.Client.dll</HintPath>
+    <Reference Include="Shimmer.Client">
+      <HintPath>packages\Shimmer.Client.0.6.10-beta\lib\net40\Shimmer.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Shimmer.Core, Version=0.6.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.Core.0.6.9-beta\lib\net40\Shimmer.Core.dll</HintPath>
+    <Reference Include="Shimmer.Core">
+      <HintPath>packages\Shimmer.Core.0.6.10-beta\lib\net40\Shimmer.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
