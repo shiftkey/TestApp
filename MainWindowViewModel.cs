@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Reactive.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using GalaSoft.MvvmLight.Command;
 using Shimmer.Client;
@@ -12,6 +14,10 @@ namespace TestApp
     {
         public MainWindowViewModel()
         {
+            var assembly = Assembly.GetExecutingAssembly();
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            Version = fvi.FileVersion;
+
             CheckForUpdateCommand = new RelayCommand(CheckForUpdate, CanCheckForUpdate);
             DownloadReleasesCommand = new RelayCommand(DownloadReleases, CanDownloadReleases);
             ApplyReleasesCommand = new RelayCommand(ApplyReleases, CanApplyReleases);
