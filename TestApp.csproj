@@ -41,10 +41,6 @@
     <ApplicationIcon>sparkles.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CreateReleasePackage, Version=0.6.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.0.6.8-beta\lib\net40\CreateReleasePackage.exe</HintPath>
-    </Reference>
     <Reference Include="MarkdownSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
@@ -65,29 +61,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\NuGet.Core.2.7.0\lib\net40-Client\NuGet.Core.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Blend_Net45, Version=4.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Shimmer.Client, Version=0.6.9.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\reactiveui-xaml.4.6.5\lib\net45\ReactiveUI.Blend_Net45.dll</HintPath>
+      <HintPath>packages\Shimmer.Client.0.6.9-beta\lib\net40\Shimmer.Client.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Routing_Net45">
-      <HintPath>packages\reactiveui-xaml.4.6.5\lib\net45\ReactiveUI.Routing_Net45.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ReactiveUI.Xaml_Net45, Version=4.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Shimmer.Core, Version=0.6.9.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\reactiveui-xaml.4.6.5\lib\net45\ReactiveUI.Xaml_Net45.dll</HintPath>
-    </Reference>
-    <Reference Include="ReactiveUI_Net45, Version=4.6.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\reactiveui-core.4.6.5\lib\net45\ReactiveUI_Net45.dll</HintPath>
-    </Reference>
-    <Reference Include="Shimmer.Client, Version=0.6.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.Client.0.6.8-beta\lib\net40\Shimmer.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Shimmer.Core, Version=0.6.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Shimmer.Core.0.6.8-beta\lib\net40\Shimmer.Core.dll</HintPath>
+      <HintPath>packages\Shimmer.Core.0.6.9-beta\lib\net40\Shimmer.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -111,10 +91,6 @@
     <Reference Include="System.Reactive.PlatformServices, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Rx-PlatformServices.2.1.30214.0\lib\Net45\System.Reactive.PlatformServices.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Windows.Threading, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Rx-XAML.2.1.30214.0\lib\Net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -141,12 +117,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
