@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -74,6 +75,19 @@ namespace TestApp
             }
         }
 
+        string checkUpdatesResult;
+        public string CheckUpdatesResult
+        {
+            get { return checkUpdatesResult; }
+            set
+            {
+                if (checkUpdatesResult == value) return;
+
+                checkUpdatesResult = value;
+                OnPropertyChanged();
+            }
+        }
+
         UpdateInfo downloadedUpdateInfo;
         public UpdateInfo DownloadedUpdateInfo
         {
@@ -89,13 +103,28 @@ namespace TestApp
             }
         }
 
+        string downloadUpdatesResult;
+        public string DownloadUpdatesResult
+        {
+            get { return downloadUpdatesResult; }
+            set
+            {
+                if (downloadUpdatesResult == value) return;
+
+                downloadUpdatesResult = value;
+                OnPropertyChanged();
+            }
+        }
+
         public RelayCommand CheckForUpdateCommand { get; set; }
 
         async void CheckForUpdate()
         {
+            CheckUpdatesResult = "";
             using (var updater = new UpdateManager(UpdatePath, "TestApp", FrameworkVersion.Net45))
             {
                 UpdateInfo = await updater.CheckForUpdate();
+                CheckUpdatesResult = String.Format("{0} updates found to apply", UpdateInfo.ReleasesToApply.Count());
             }
         }
 
@@ -108,25 +137,29 @@ namespace TestApp
 
         async void DownloadReleases()
         {
+            DownloadUpdatesResult = "";
             using (var updater = new UpdateManager(UpdatePath, "TestApp", FrameworkVersion.Net45))
             {
                await updater.DownloadReleases(UpdateInfo.ReleasesToApply);
                DownloadedUpdateInfo = UpdateInfo;
+               DownloadUpdatesResult = String.Format("{0} updates downloaded", DownloadedUpdateInfo.ReleasesToApply.Count());
             }
         }
 
         bool CanDownloadReleases()
         {
-            return UpdateInfo != null;
+            return UpdateInfo != null && UpdateInfo.ReleasesToApply.Any();
         }
 
         public RelayCommand ApplyReleasesCommand { get; set; }
 
         async void ApplyReleases()
         {
+            ApplyUpdatesResult = "";
             using (var updater = new UpdateManager(UpdatePath, "TestApp", FrameworkVersion.Net45))
             {
                 await updater.ApplyReleases(DownloadedUpdateInfo);
+                ApplyUpdatesResult = String.Format("{0} updates applied!", DownloadedUpdateInfo.ReleasesToApply.Count());
             }
         }
 
@@ -134,6 +167,20 @@ namespace TestApp
         {
             return DownloadedUpdateInfo != null;
         }
+
+        string applyUpdatesResult;
+        public string ApplyUpdatesResult
+        {
+            get { return applyUpdatesResult; }
+            set
+            {
+                if (applyUpdatesResult == value) return;
+
+                applyUpdatesResult = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
