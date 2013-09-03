@@ -24,18 +24,7 @@ namespace TestApp
             ApplyReleasesCommand = new RelayCommand(ApplyReleases, CanApplyReleases);
         }
 
-        string version;
-        public string Version
-        {
-            get { return version; }
-            set
-            {
-                if (version == value) return;
-
-                version = value;
-                OnPropertyChanged();
-            }
-        }
+        public string Version { get; set; }
 
         string updatePath;
         public string UpdatePath
@@ -75,18 +64,7 @@ namespace TestApp
             }
         }
 
-        string checkUpdatesResult;
-        public string CheckUpdatesResult
-        {
-            get { return checkUpdatesResult; }
-            set
-            {
-                if (checkUpdatesResult == value) return;
-
-                checkUpdatesResult = value;
-                OnPropertyChanged();
-            }
-        }
+        public string CheckUpdatesResult { get; set; }
 
         UpdateInfo downloadedUpdateInfo;
         public UpdateInfo DownloadedUpdateInfo
@@ -103,18 +81,7 @@ namespace TestApp
             }
         }
 
-        string downloadUpdatesResult;
-        public string DownloadUpdatesResult
-        {
-            get { return downloadUpdatesResult; }
-            set
-            {
-                if (downloadUpdatesResult == value) return;
-
-                downloadUpdatesResult = value;
-                OnPropertyChanged();
-            }
-        }
+        public string DownloadUpdatesResult { get; set; }
 
         public RelayCommand CheckForUpdateCommand { get; set; }
 
@@ -168,19 +135,7 @@ namespace TestApp
             return DownloadedUpdateInfo != null;
         }
 
-        string applyUpdatesResult;
-        public string ApplyUpdatesResult
-        {
-            get { return applyUpdatesResult; }
-            set
-            {
-                if (applyUpdatesResult == value) return;
-
-                applyUpdatesResult = value;
-                OnPropertyChanged();
-            }
-        }
-
+        public string ApplyUpdatesResult { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
