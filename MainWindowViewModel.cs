@@ -91,7 +91,25 @@ namespace TestApp
             using (var updater = new UpdateManager(UpdatePath, "TestApp", FrameworkVersion.Net45))
             {
                 UpdateInfo = await updater.CheckForUpdate();
-                CheckUpdatesResult = String.Format("{0} updates found to apply", UpdateInfo.ReleasesToApply.Count());
+
+                SetResult(UpdateInfo);
+            }
+        }
+
+        void SetResult(UpdateInfo info)
+        {
+            if (info == null)
+            {
+                CheckUpdatesResult = "No updates found";
+            }
+            else if (!info.ReleasesToApply.Any())
+            {
+                CheckUpdatesResult = "You're up to date!";
+            }
+            else
+            {
+                var latest = info.ReleasesToApply.MaxBy(x => x.Version).First();
+                CheckUpdatesResult = String.Format("You can update to {0}", latest.Version);
             }
         }
 
