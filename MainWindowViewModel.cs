@@ -87,13 +87,19 @@ namespace TestApp
 
         async void CheckForUpdate()
         {
-            CheckUpdatesResult = "";
+            ClearAllMessages();
             using (var updater = new UpdateManager(UpdatePath, "TestApp", FrameworkVersion.Net45))
             {
                 UpdateInfo = await updater.CheckForUpdate();
-
                 SetResult(UpdateInfo);
             }
+        }
+
+        private void ClearAllMessages()
+        {
+            CheckUpdatesResult = "";
+            DownloadUpdatesResult = "";
+            ApplyUpdatesResult = "";
         }
 
         void SetResult(UpdateInfo info)
